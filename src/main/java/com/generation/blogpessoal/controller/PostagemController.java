@@ -23,7 +23,7 @@ public class PostagemController {
 	@GetMapping
 	public ResponseEntity <List<Postagem>> getAll(){
 		return ResponseEntity.ok(postagemRepository.findAll());
-		// select * from tb_postagens;
+		// select * from tb_postagens
 	}
 
 }
