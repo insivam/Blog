@@ -44,7 +44,7 @@ public class PostagemController {
 	public ResponseEntity<List<Postagem>> getByTitulo(@PathVariable String titulo) {
 		return ResponseEntity.ok(postagemRepository.findAllByTituloContainingIgnoreCase(titulo));
 
-		// select *from tb_postagens where titulo like %titulo%
+		// select * from tb_postagens where titulo like %titulo%
 	}
 
 	@PostMapping
@@ -59,7 +59,7 @@ public class PostagemController {
 			.orElse(ResponseEntity.notFound().build());
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/{id}")	
 	public ResponseEntity<?> deletePostagem(@PathVariable Long id) {
 		return postagemRepository.findById(id)
 				.map(resposta -> {
