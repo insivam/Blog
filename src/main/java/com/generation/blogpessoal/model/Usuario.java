@@ -11,7 +11,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -24,10 +23,10 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@NotNull(message = "O atributo Nome é Obrigatório!")
+	@NotBlank(message = "O atributo Nome é Obrigatório!")
 	private String nome;
 
-	@NotNull(message = "O atributo Usuário é Obrigatório!")
+	@NotBlank(message = "O atributo Usuário é Obrigatório!")
 	@Email(message = "O atributo Usuário deve ser um email válido!")
 	private String usuario;
 
@@ -36,10 +35,25 @@ public class Usuario {
 	private String senha;
 
 	private String foto;
-	
+
 	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
+
+	// Primeiro método Construtor
+
+	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+	}
+
+	// Segundo método Construtor
+
+	public Usuario() {
+	}
 
 	public Long getId() {
 		return id;
@@ -80,7 +94,7 @@ public class Usuario {
 	public void setFoto(String foto) {
 		this.foto = foto;
 	}
-	
+
 	// Getters and Setters
 
 	public List<Postagem> getPostagem() {

@@ -30,7 +30,7 @@ public class UsuarioService {
 		Optional<Usuario> buscarUsuario = usuarioRepository.findByUsuario(usuario.getUsuario());
 		
 		if (usuarioRepository.findById(usuario.getId()).isPresent()) {
-			if (buscarUsuario.isPresent() && usuario.getUsuario() != buscarUsuario.get().getUsuario())
+			if (buscarUsuario.isPresent() && usuario.getId() != buscarUsuario.get().getId())
 				throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "E-mail já em uso", null);
 			usuario.setSenha(criptografarSenha(usuario.getSenha()));
 			return Optional.ofNullable(usuarioRepository.save(usuario));
