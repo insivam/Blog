@@ -26,7 +26,7 @@ public class UsuarioRepositoryTest {
 	@BeforeAll
 	void start() {
 
-		usuarioRepository.deleteAll();
+		usuarioRepository.deleteAll();	
 
 		usuarioRepository.save(new Usuario(0L, "João da Silva", "joao@email.com.br", "13465278",
                                            "https://i.imgur.com/FETvs2O.jpg"));
