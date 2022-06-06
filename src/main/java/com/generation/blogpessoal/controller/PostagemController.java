@@ -29,7 +29,7 @@ public class PostagemController {
 	private PostagemRepository postagemRepository;
 
 	@Autowired
-	private PostagemRepository temaRepository;
+	private TemaRepository temaRepository;
 
 	@GetMapping
 	public ResponseEntity<List<Postagem>> getAll() {
